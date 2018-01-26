@@ -1,0 +1,25 @@
+@charset "ISO-8859-1";
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+.subtitle{
+	margin-top:30px;
+	margin-bottom: 10px;
+}
+.letterskip{
+	margin:0 auto;
+	display: table;
+}
+.letterskip>.letterskipchild{	
+	margin-top:10px;
+	text-align:center;
+	display: inline-block;
+}
+.navbar-default{
+	background-color : transparent;
+	background: url('../library/pattern.png');
+	border-color: transparent;
+}
+.divskip{
+	padding-top:10px;
+	padding-bottom:10px;
+}
