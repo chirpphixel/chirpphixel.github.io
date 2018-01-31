@@ -16,7 +16,7 @@
 	</head>
 
 	<body>
-		<nav class="navbar navbar-default">
+		<nav class="navbar navbar-default" id="top">
 			<div class="container-fluid">
 				<div class="navbar-header">
 					<span class="navbar-brand">LegendDemonSlayer's Mousehunt Guide</span>
@@ -85,7 +85,8 @@
 					<li>BBBB – Big Bad Behemoth Burroughs Mouse</li>
 					<li>BC - Balack's Cove</li>
 					<li>BPT or BSP – Blackstone Pass Trap</li>
-					<li>BW – Black Widow Mouse or Bristle Woods region</li>
+					<li>BW – Black Widow Mouse or Bristle Woods area</li>
+					<li>BWRift(or BW-Rift) - Bristle Woods Rift</li>
 				</ul>				
 			</div>
 			<div class="divskip" id="skipc">
@@ -257,6 +258,7 @@
 				</ul>				
 			</div>
 		</div>
+		<a href="#top"><button id="topbtn" title="Go to top">Top</button></a>
 	</body>
 
 	<script>
@@ -295,5 +297,15 @@
       }
     }
   });
+
+  window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+        document.getElementById("topbtn").style.display = "block";
+    } else {
+        document.getElementById("topbtn").style.display = "none";
+    }
+}
 </script>
 </html>
