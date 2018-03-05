@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="confetti-js-master/dist/index.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css?family=Karma');
+
+.countr{
+	padding: 0 20%;
+	padding-top:10%;
+}
+iframe{
+	    margin: auto;
+    padding: 10px;
+    display: block;
+}
+
+#x{
+	display:none;
+}
+#poi{
+	width:100%;
+	height: auto;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #fff;
+  font-family: 'Karma', serif;
+}
+#my-canvas{
+	position:absolute;
+}
+
+</style>
+	
+</head>
+<body>
+
+	<canvas id="my-canvas"></canvas>
+	<div class="countr">
+<iframe src="http://free.timeanddate.com/countdown/i6516r2l/n250/cf100/cm0/cu4/ct0/cs1/ca0/cr0/ss0/cac000/cpc000/pct/tcfff/fs200/szw720/szh200/tatCountdown%20to%20MH%2010th%20Birthday(6th%20March)/tac000/tptTime%20since%20Event%20started%20in/tpc000/mac000/mpc000/iso2018-03-06T11:00:00/pd2" allowTransparency="true" frameborder="0" width="720" height="200"></iframe>
+
+<hr>
+<iframe src="http://free.timeanddate.com/countdown/i6516r2l/n250/cf100/cm0/cu4/ct0/cs1/ca0/cr0/ss0/cac000/cpc000/pct/tcfff/fs200/szw720/szh200/tatCountdown%20to%20MH%2010th%20Birthday(7th%20March)/tac000/tptTime%20since%20Event%20started%20in/tpc000/mac000/mpc000/iso2018-03-07T11:00:00/pd2" allowTransparency="true" frameborder="0" width="720" height="200"></iframe>
+
+
+
+</div>
+
+<script>
+	    var confettiSettings = { target: 'my-canvas', max:'100' };
+      var confetti = new ConfettiGenerator(confettiSettings);
+      confetti.render();
+</script>
+	</body>
+</html>
