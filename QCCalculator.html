@@ -13,6 +13,12 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/main.css">		
 	<style>
+
+	@media only screen and (min-width: 768px) {
+    .table-responsive {
+        display: inline-table;
+    }
+}
 	.table {
 		border-collapse: collapse;
 		width: 100%;
@@ -25,7 +31,11 @@
 	th{
 		background-color: #ccc;
 	}
-	.
+	@media only screen and (max-width: 768px) {
+    .navbar-brand {
+        font-size: 80%;
+    }
+
 </style>
 </head>
 
@@ -47,12 +57,14 @@
 		<div id="pumptocheeseratio">
 			<h5 class="subtitle">Table of hunts needed for <span class="font-italic">Should I go for X Queso at Pump Y?*</span></h5>
 			<br>
+			<div>
 			Legend:
 			<br>
 			<span class="bg-success">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span> – Recommended</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<span class="bg-warning">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span> – Possible But May Take A Longer Time</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<span class="bg-danger">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span> – Not Recommended</span>
-			<br>
+		</div>
+			
 			<br>
 			* Hunts not including the farming of previous leaf/leaves level (eg. Mild+Medium+Hot hunts)
 			<br>
@@ -160,6 +172,7 @@
 				</tbody>
 			</table>
 		</div>
+		<hr>
 		<p>If you see any mistakes/errors in the information, report to @LegendDemonSlayer#8006 at Discord or create an issue at <a href=
 			"https://github.com/legenddemonslayer/legenddemonslayer.github.io">https://github.com/legenddemonslayer/legenddemonslayer.github.io<a></p>
 	</div>
