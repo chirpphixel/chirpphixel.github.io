@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Mousehunt Queso Canyon Calculator - LegendDemonSlayer</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!--Javascript-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+	<!--CSS-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/main.css">		
+	<style>
+	.table {
+		border-collapse: collapse;
+		width: 80%;
+		table-layout: fixed;
+	}
+
+	th, td {
+		padding: 15px;
+	}
+	th{
+		background-color: #ccc;
+	}
+	.
+</style>
+</head>
+
+<body>
+	<nav class="navbar navbar-default" id="top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<span class="navbar-brand">LegendDemonSlayer's Queso Canyon Calculator</span>
+
+			</div>
+		</div>
+	</nav>
+	<div class="container">
+		<div id="maincalc">
+			<h5 class="subtitle">Calculator for effectiveness in pump to queso ratio</h5>
+			<img src="http://www.gruppogesp.it/wp-content/uploads/2018/04/construction-animated-gif-7.gif" />
+		</div>
+		<hr>
+		<div id="pumptocheeseratio">
+			<h5 class="subtitle">Table of hunts needed for <span class="font-italic">Should I go for X Queso at Pump Y?*</span></h5>
+			<br>
+			Legend:
+			<br>
+			<span class="bg-success">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span> – Recommended</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<span class="bg-warning">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span> – Possible But May Take A Longer Time</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<span class="bg-danger">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span> – Not Recommended</span>
+			<br>
+			<br>
+			* Hunts not including the farming of previous leaf/leaves level (eg. Mild+Medium+Hot hunts)
+			<br>
+			<table class="table table-bordered">
+				<tbody>
+					<tr>
+						<th>&nbsp;</th>
+						<th>Bland(output)</th>
+						<th>Mild</th>
+						<th>Medium</th>
+						<th>Hot</th>
+						<th>Flamin'</th>
+						<th>Wildfire</th>
+					</tr>
+					<tr>
+						<td class="bg-light">Pump 1</td>
+						<td class="bg-light">1</td>
+						<td class="bg-success">10</td>
+						<td class="bg-warning">100</td>
+						<td class="bg-danger">1,000</td>
+						<td class="bg-danger">10,000</td>
+						<td class="bg-danger">25,000</td>
+					</tr>
+					<tr>
+						<td class="bg-light">Pump 2</td>
+						<td class="bg-light">2</td>
+						<td class="bg-success">5</td>
+						<td class="bg-success">50</td>
+						<td class="bg-danger">500</td>
+						<td class="bg-danger">5,000</td>
+						<td class="bg-danger">12,500</td>
+					</tr>
+					<tr>
+						<td class="bg-light">Pump 3</td>
+						<td class="bg-light">5</td>
+						<td class="bg-success">2</td>
+						<td class="bg-success">20</td>
+						<td class="bg-danger">200</td>
+						<td class="bg-danger">2,000</td>
+						<td class="bg-danger">5,000</td>
+					</tr>
+					<tr>
+						<td class="bg-light">Pump 4</td>
+						<td class="bg-light">7</td>
+						<td class="bg-success">2</td>
+						<td class="bg-success">15</td>
+						<td class="bg-warning">143</td>
+						<td class="bg-danger">1,429</td>
+						<td class="bg-danger">3,572</td>
+					</tr>
+					<tr>
+						<td class="bg-light">Pump 5</td>
+						<td class="bg-light">12</td>
+						<td class="bg-success">1</td>
+						<td class="bg-success">9</td>
+						<td class="bg-warning">84</td>
+						<td class="bg-danger">834</td>
+						<td class="bg-danger">2,084</td>
+					</tr>
+					<tr>
+						<td class="bg-light">Pump 6</td>
+						<td class="bg-light">30</td>
+						<td class="bg-success">1</td>
+						<td class="bg-success">4</td>
+						<td class="bg-success">34</td>
+						<td class="bg-danger">334</td>
+						<td class="bg-danger">834</td>
+					</tr>
+					<tr>
+						<td class="bg-light">Pump 7</td>
+						<td class="bg-light">40</td>
+						<td class="bg-success">1</td>
+						<td class="bg-success">3</td>
+						<td class="bg-success">25</td>
+						<td class="bg-warning">250</td>
+						<td class="bg-danger">625</td>
+					</tr>
+					<tr>
+						<td class="bg-light">Pump 8</td>
+						<td class="bg-light">60</td>
+						<td class="bg-success">1</td>
+						<td class="bg-success">2</td>
+						<td class="bg-success">17</td>
+						<td  class="bg-warning">167</td>
+						<td class="bg-danger">417</td>
+					</tr>
+					<tr>
+						<td class="bg-light">Pump 9</td>
+						<td class="bg-light">150</td>
+						<td class="bg-success">1</td>
+						<td class="bg-success">1</td>
+						<td class="bg-success">67</td>
+						<td class="bg-success">67</td>
+						<td class="bg-warning">167</td>
+					</tr>
+					<tr>
+						<td class="bg-light">Pump 10</td>
+						<td class="bg-light">200</td>
+						<td class="bg-success">1</td>
+						<td class="bg-success">1</td>
+						<td class="bg-success">5</td>
+						<td class="bg-success">50</td>
+						<td class="bg-success">125</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<p>If you see any mistakes/errors in the information, report to @LegendDemonSlayer38006 at Discord or create an issue at <a href=
+			"https://github.com/legenddemonslayer/legenddemonslayer.github.io">https://github.com/legenddemonslayer/legenddemonslayer.github.io<a></p>
+	</div>
+
+</body>
+
+<script>
+
+</script>
+</html>
