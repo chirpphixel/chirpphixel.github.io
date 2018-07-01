@@ -8,6 +8,7 @@
 	<!--Javascript-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script src="qc.js"></script>
 
 	<!--CSS-->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
@@ -15,10 +16,10 @@
 	<style>
 
 	@media only screen and (min-width: 768px) {
-    .table-responsive {
-        display: inline-table;
-    }
-}
+		.table-responsive {
+			display: inline-table;
+		}
+	}
 	.table {
 		border-collapse: collapse;
 		width: 100%;
@@ -32,11 +33,11 @@
 		background-color: #ccc;
 	}
 	@media only screen and (max-width: 768px) {
-    .navbar-brand {
-        font-size: 80%;
-    }
+		.navbar-brand {
+			font-size: 80%;
+		}
 
-</style>
+	</style>
 </head>
 
 <body>
@@ -50,21 +51,139 @@
 	</nav>
 	<div class="container">
 		<div id="maincalc">
-			<h5 class="subtitle">Calculator for effectiveness in pump to queso ratio</h5>
-			<img src="http://www.gruppogesp.it/wp-content/uploads/2018/04/construction-animated-gif-7.gif" />
+			<h5 class="subtitle">Estimated Nachore Calculator for your next pump</h5>
+			<form>
+				<div class="form-group col-sm-6">
+					<label for="pumplvl">Select current pump level:</label>
+					<select class="form-control col-sm-6" id="pumplvl">
+						<option selected disabled>-- Select current pump level --</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+					</select>
+					<br>
+					<p id="nextpumpreq"></p>
+				</div>
+				<br>
+				<div class="col-sm-10">
+					<label>Enter Current Resources (leave as 0 if no resources):</label>
+					<table class="table table-responsive">
+						<thead>
+							<tr>
+								<th></th>
+								<th>Leaf/Leaves</th>
+								<th>SB Crafting</th>
+								<th>Queso(s) currently you have(not counting the leaves and crafting it)</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Bland</td>
+								<td></td>							
+								<td>
+								</td>
+								<td>
+									<div class="form-group">
+										<input type="number" class="form-control" id="blandquesocount" min="1" step="1" value="0">
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Mild</td>
+								<td>
+									<div class="form-group">
+										<input type="number" class="form-control" id="mildleavescount" min="1" step="1" value="0">
+									</div>
+								</td>						
+								<td>
+									<div class="form-group">
+										<input type="checkbox" class="form-control" id="mildquesosb">
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<input type="number" class="form-control" id="mildquesocount" min="1" step="1" value="0">
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Medium</td>
+								<td>
+									<div class="form-group">
+										<input type="number" class="form-control" id="mediumleavescount" min="1" step="1" value="0">
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<input type="checkbox" class="form-control" id="mediumquesosb">
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<input type="number" class="form-control" id="mediumquesocount" min="1" step="1" value="0">
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Hot</td>
+								<td>
+									<div class="form-group">
+										<input type="number" class="form-control" id="hotleavescount" min="1" step="1" value="0">
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<input type="checkbox" class="form-control" id="hotquesosb">
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<input type="number" class="form-control" id="hotquesocount" min="1" step="1" value="0">
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Flamin'</td>
+								<td>
+									<div class="form-group">
+										<input type="number" class="form-control" id="hotleavescount" min="1" step="1" value="0">
+									</div>
+								</td>							
+								<td>
+									<div class="form-group">
+										<input type="checkbox" class="form-control" id="flaminquesosb">
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+										<input type="number" class="form-control" id="flaminquesocount" min="1" step="1" value="0">
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</form>
 		</div>
 		<hr>
 		<div id="pumptocheeseratio">
 			<h5 class="subtitle">Table of hunts needed for <span class="font-italic">Should I go for X Queso at Pump Y?*</span></h5>
 			<br>
 			<div>
-			Legend:
-			<br>
-			<span class="bg-success">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span> – Recommended</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<span class="bg-warning">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span> – Possible But May Take A Longer Time</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<span class="bg-danger">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span> – Not Recommended</span>
-		</div>
-			
+				Legend:
+				<br>
+				<span class="bg-success">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span> – Recommended</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<span class="bg-warning">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span> – Possible But May Take A Longer Time</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<span class="bg-danger">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span> – Not Recommended</span>
+			</div>
+
 			<br>
 			* Hunts not including the farming of previous leaf/leaves level (eg. Mild+Medium+Hot hunts)
 			<br>
@@ -173,13 +292,25 @@
 			</table>
 		</div>
 		<hr>
-		<p>If you see any mistakes/errors in the information, report to @LegendDemonSlayer#8006 at Discord or create an issue at <a href=
-			"https://github.com/legenddemonslayer/legenddemonslayer.github.io">https://github.com/legenddemonslayer/legenddemonslayer.github.io<a></p>
+		<p>If you see any mistakes/errors in the information, report to @LegendDemonSlayer#8006 in Discord.</p>
 	</div>
 
 </body>
 
 <script>
+
+	$(document).ready(function(){
+		$("#pumplvl").change(function(){
+			if($("#pumplvl").val() != 10){
+				var nextpumplvl = $("#pumplvl").val();
+				nextpumplvl--;
+				$("#nextpumpreq").html("Next Pump Requires <b>"+pumpreq[nextpumplvl]+"</b> Nachores.");
+			}
+			else{
+				$("#nextpumpreq").html("You're on highest level of pump.");
+			}
+		});
+	});
 
 </script>
 </html>
