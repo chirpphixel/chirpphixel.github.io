@@ -22,7 +22,7 @@
 	}
 	.table {
 		border-collapse: collapse;
-		width: 100%;
+		width: 90%;
 		table-layout: fixed;
 	}
 
@@ -32,12 +32,15 @@
 	th{
 		background-color: #ccc;
 	}
+	th:nth-child(1),td:nth-child(1){  
+		width: 10%;
+	}
 	@media only screen and (max-width: 768px) {
 		.navbar-brand {
 			font-size: 80%;
 		}
-
-	</style>
+	}
+</style>
 </head>
 
 <body>
@@ -51,9 +54,10 @@
 	</nav>
 	<div class="container">
 		<div id="maincalc">
-			<h5 class="subtitle">Estimated Nachore Calculator for your next pump</h5>
+			<h5 class="subtitle">Estimated Leaves/Nachore Calculator for your next pump</h5>
 			<form>
 				<div class="form-group col-sm-6">
+					<br>
 					<label for="pumplvl">Select current pump level:</label>
 					<select class="form-control col-sm-6" id="pumplvl">
 						<option selected disabled>-- Select current pump level --</option>
@@ -72,15 +76,16 @@
 					<p id="nextpumpreq"></p>
 				</div>
 				<br>
-				<div class="col-sm-10">
-					<label>Enter Current Resources (leave as 0 if no resources):</label>
-					<table class="table table-responsive">
+				<div class="col-sm-12">
+					<label>Enter Current Resources (leave box as 0 if no resources):</label>
+					<table class="table table-responsive table-bordered" id="calctable">
 						<thead>
 							<tr>
 								<th></th>
 								<th>Leaf/Leaves</th>
-								<th>SB Crafting</th>
-								<th>Queso(s) currently you have(not counting the leaves and crafting it)</th>
+								<th>SB Crafting<br>	(Using 3 or 6 crafting recipe)</th>
+								<th>Queso(s) currently you have<br>(not counting the leaves and crafting it)</th>
+								<th>Total Quesos</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -91,15 +96,16 @@
 								</td>
 								<td>
 									<div class="form-group">
-										<input type="number" class="form-control" id="blandquesocount" min="1" step="1" value="0">
+										<input type="number" class="form-control" id="blandquesocount" min="1" step="1" placeholder="0">
 									</div>
 								</td>
+								<td><span id="totalblandqueso">0</span></td>
 							</tr>
 							<tr>
 								<td>Mild</td>
 								<td>
 									<div class="form-group">
-										<input type="number" class="form-control" id="mildleavescount" min="1" step="1" value="0">
+										<input type="number" class="form-control" id="mildleavescount" min="1" step="1" placeholder="0">
 									</div>
 								</td>						
 								<td>
@@ -109,15 +115,16 @@
 								</td>
 								<td>
 									<div class="form-group">
-										<input type="number" class="form-control" id="mildquesocount" min="1" step="1" value="0">
+										<input type="number" class="form-control" id="mildquesocount" min="1" step="1" placeholder="0">
 									</div>
 								</td>
+								<td><span id="totalmildqueso">0</span></td>
 							</tr>
 							<tr>
 								<td>Medium</td>
 								<td>
 									<div class="form-group">
-										<input type="number" class="form-control" id="mediumleavescount" min="1" step="1" value="0">
+										<input type="number" class="form-control" id="mediumleavescount" min="1" step="1" placeholder="0">
 									</div>
 								</td>
 								<td>
@@ -127,15 +134,16 @@
 								</td>
 								<td>
 									<div class="form-group">
-										<input type="number" class="form-control" id="mediumquesocount" min="1" step="1" value="0">
+										<input type="number" class="form-control" id="mediumquesocount" min="1" step="1" placeholder="0">
 									</div>
 								</td>
+								<td><span id="totalmediumqueso">0</span></td>
 							</tr>
 							<tr>
 								<td>Hot</td>
 								<td>
 									<div class="form-group">
-										<input type="number" class="form-control" id="hotleavescount" min="1" step="1" value="0">
+										<input type="number" class="form-control" id="hotleavescount" min="1" step="1" placeholder="0">
 									</div>
 								</td>
 								<td>
@@ -145,15 +153,16 @@
 								</td>
 								<td>
 									<div class="form-group">
-										<input type="number" class="form-control" id="hotquesocount" min="1" step="1" value="0">
+										<input type="number" class="form-control" id="hotquesocount" min="1" step="1" placeholder="0">
 									</div>
 								</td>
+								<td><span id="totalhotqueso">0</span></td>
 							</tr>
 							<tr>
 								<td>Flamin'</td>
 								<td>
 									<div class="form-group">
-										<input type="number" class="form-control" id="hotleavescount" min="1" step="1" value="0">
+										<input type="number" class="form-control" id="hotleavescount" min="1" step="1" placeholder="0">
 									</div>
 								</td>							
 								<td>
@@ -163,9 +172,10 @@
 								</td>
 								<td>
 									<div class="form-group">
-										<input type="number" class="form-control" id="flaminquesocount" min="1" step="1" value="0">
+										<input type="number" class="form-control" id="flaminquesocount" min="1" step="1" placeholder="0">
 									</div>
 								</td>
+								<td><span id="totalflaminqueso">0</span></td>
 							</tr>
 						</tbody>
 					</table>
@@ -292,7 +302,7 @@
 			</table>
 		</div>
 		<hr>
-		<p>If you see any mistakes/errors in the information, report to @LegendDemonSlayer#8006 in Discord.</p>
+		<p>If you see any mistakes/errors/display issues in the information, report to @LegendDemonSlayer#8006 in Discord.</p>
 	</div>
 
 </body>
@@ -300,16 +310,178 @@
 <script>
 
 	$(document).ready(function(){
+
+		//check pump level
 		$("#pumplvl").change(function(){
-			if($("#pumplvl").val() != 10){
+			if($("#pumplvl").val() > 0 && $("#pumplvl").val() < 10 && $("#pumplvl").val() != null){
 				var nextpumplvl = $("#pumplvl").val();
 				nextpumplvl--;
 				$("#nextpumpreq").html("Next Pump Requires <b>"+pumpreq[nextpumplvl]+"</b> Nachores.");
 			}
-			else{
+			else if($("#pumplvl").val() == 10){
 				$("#nextpumpreq").html("You're on highest level of pump.");
 			}
+			else{
+				$("#nextpumpreq").html("Error!");
+			}
 		});
+
+		//check bland queso count
+		$("#blandquesocount").on('input', function(){
+			if($("#blandquesocount").val()===""){
+				$("#totalblandqueso").text("0");
+			}
+			else{
+				$("#totalblandqueso").text($("#blandquesocount").val() + " Bland Queso(s)");
+			}
+		});
+
+		//check mild queso count
+		$("#mildleavescount,#mildquesosb, #mildquesocount").on('input', function(){
+			if($("#mildleavescount").val()==="" && $("#mildquesocount").val()===""){
+				$("#totalmildqueso").text("0");
+			}
+			else{
+				//calc
+				var totalmildqueso = 0;
+				//check if mild leave input is empty
+				if($("#mildleavescount").val()!=""){
+					var mildleavescount = parseInt($("#mildleavescount").val());
+
+
+					if (mildleavescount >= 10){
+						mildleavescount = mildleavescount - mildleavescount%10;
+						
+						if(!$("#mildquesosb").is(':checked')){
+							totalmildqueso += mildleavescount/10*3;
+							console.log(mildleavescount/10*3);
+						}
+						else{
+							totalmildqueso += mildleavescount/10*6;
+							console.log(mildleavescount/10*6);
+						}
+					}
+				}
+				if($("#mildquesocount").val()!=""){
+					var mildquesocount = parseInt($("#mildquesocount").val());
+
+					totalmildqueso += mildquesocount;
+				}
+				$("#totalmildqueso").text(totalmildqueso + " Medium Queso(s)");
+
+			}
+		});
+
+
+		//check medium queso count
+		$("#mediumleavescount,#mediumquesosb, #mediumquesocount").on('input', function(){
+			if($("#mediumleavescount").val()==="" && $("#mediumquesocount").val()===""){
+				$("#totalmediumqueso").text("0");
+			}
+			else{
+				//calc
+				var totalmediumqueso = 0;
+				//check if medium leave input is empty
+				if($("#mediumleavescount").val()!=""){
+					var mediumleavescount = parseInt($("#mediumleavescount").val());
+
+
+					if (mediumleavescount >= 10){
+						mediumleavescount = mediumleavescount - mediumleavescount%10;
+						
+						if(!$("#mediumquesosb").is(':checked')){
+							totalmediumqueso += mediumleavescount/10*3;
+							console.log(mediumleavescount/10*3);
+						}
+						else{
+							totalmediumqueso += mediumleavescount/10*6;
+							console.log(mediumleavescount/10*6);
+						}
+					}
+				}
+				if($("#mediumquesocount").val()!=""){
+					var mediumquesocount = parseInt($("#mediumquesocount").val());
+
+					totalmediumqueso += mediumquesocount;
+				}
+				$("#totalmediumqueso").text(totalmediumqueso);
+
+			}
+		});
+
+
+		//check hot queso count
+		$("#hotleavescount,#hotquesosb, #hotquesocount").on('input', function(){
+			if($("#hotleavescount").val()==="" && $("#hotquesocount").val()===""){
+				$("#totalhotqueso").text("0");
+			}
+			else{
+				//calc
+				var totalhotqueso = 0;
+				//check if hot leave input is empty
+				if($("#hotleavescount").val()!=""){
+					var hotleavescount = parseInt($("#hotleavescount").val());
+
+
+					if (hotleavescount >= 10){
+						hotleavescount = hotleavescount - hotleavescount%10;
+						
+						if(!$("#hotquesosb").is(':checked')){
+							totalhotqueso += hotleavescount/10*3;
+							console.log(hotleavescount/10*3);
+						}
+						else{
+							totalhotqueso += hotleavescount/10*6;
+							console.log(hotleavescount/10*6);
+						}
+					}
+				}
+				if($("#hotquesocount").val()!=""){
+					var hotquesocount = parseInt($("#hotquesocount").val());
+
+					totalhotqueso += hotquesocount;
+				}
+				$("#totalhotqueso").text(totalhotqueso);
+
+			}
+		});
+
+		//check flamin queso count
+		$("#flaminleavescount,#flaminquesosb, #flaminquesocount").on('input', function(){
+			if($("#flaminleavescount").val()==="" && $("#flaminquesocount").val()===""){
+				$("#totalflaminqueso").text("0");
+			}
+			else{
+				//calc
+				var totalflaminqueso = 0;
+				//check if flamin leave input is empty
+				if($("#flaminleavescount").val()!=""){
+					var flaminleavescount = parseInt($("#flaminleavescount").val());
+
+
+					if (flaminleavescount >= 10){
+						flaminleavescount = flaminleavescount - flaminleavescount%10;
+						
+						if(!$("#flaminquesosb").is(':checked')){
+							totalflaminqueso += flaminleavescount/10*3;
+							console.log(flaminleavescount/10*3);
+						}
+						else{
+							totalflaminqueso += flaminleavescount/10*6;
+							console.log(flaminleavescount/10*6);
+						}
+					}
+				}
+				if($("#flaminquesocount").val()!=""){
+					var flaminquesocount = parseInt($("#flaminquesocount").val());
+
+					totalflaminqueso += flaminquesocount;
+				}
+				$("#totalflaminqueso").text(totalflaminqueso);
+
+			}
+		});		
+
 	});
 
 </script>
