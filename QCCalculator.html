@@ -187,10 +187,12 @@
 								<td><span id="totalflaminqueso">0</span></td>
 							</tr>
 						</tbody>
+
 					</table>
 				</div>
+
 			</form>
-			<button class="btn btn-success fright">test</button>
+
 		</div>
 		<hr>
 		<div id="pumptocheeseratio">
@@ -363,12 +365,10 @@
 						mildleavescount = mildleavescount - mildleavescount%10;
 						
 						if(!$("#mildquesosb").is(':checked')){
-							totalmildqueso += mildleavescount/10*3;
-							console.log(mildleavescount/10*3);
+							totalmildqueso += mildleavescount/10*3;							
 						}
 						else{
-							totalmildqueso += mildleavescount/10*6;
-							console.log(mildleavescount/10*6);
+							totalmildqueso += mildleavescount/10*6;						
 						}
 					}
 				}
@@ -401,11 +401,9 @@
 						
 						if(!$("#mediumquesosb").is(':checked')){
 							totalmediumqueso += mediumleavescount/10*3;
-							console.log(mediumleavescount/10*3);
 						}
 						else{
 							totalmediumqueso += mediumleavescount/10*6;
-							console.log(mediumleavescount/10*6);
 						}
 					}
 				}
@@ -438,11 +436,9 @@
 						
 						if(!$("#hotquesosb").is(':checked')){
 							totalhotqueso += hotleavescount/10*3;
-							console.log(hotleavescount/10*3);
 						}
 						else{
 							totalhotqueso += hotleavescount/10*6;
-							console.log(hotleavescount/10*6);
 						}
 					}
 				}
@@ -474,11 +470,9 @@
 						
 						if(!$("#flaminquesosb").is(':checked')){
 							totalflaminqueso += flaminleavescount/10*3;
-							console.log(flaminleavescount/10*3);
 						}
 						else{
 							totalflaminqueso += flaminleavescount/10*6;
-							console.log(flaminleavescount/10*6);
 						}
 					}
 				}
