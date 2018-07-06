@@ -4,7 +4,7 @@
 	<title>Mousehunt Queso Canyon Calculator - LegendDemonSlayer</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-
+	<link rel="shortcut icon" type="image/png" href="library/mouse.ico"/>
 	<!--Javascript-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -40,6 +40,15 @@
 			font-size: 80%;
 		}
 	}
+	.button-align-table{
+		margin-right:10%;
+	}
+	#calculatoroutput{
+		resize: none;
+		margin-left:1%;
+		min-height: 5% !important; 
+
+	}
 </style>
 </head>
 
@@ -54,149 +63,189 @@
 	</nav>
 	<div class="container">
 		<div id="maincalc">
-			<h5 class="subtitle">Estimated Leaves/Nachore Calculator for your next pump</h5>
-			<form>
-				<div class="form-group col-sm-6">
-					<br>
-					<label for="pumplvl">Select current pump level:</label>
-					<select class="form-control col-sm-6" id="pumplvl">
-						<option selected disabled>-- Select current pump level --</option>
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-						<option value="5">5</option>
-						<option value="6">6</option>
-						<option value="7">7</option>
-						<option value="8">8</option>
-						<option value="9">9</option>
-						<option value="10">10</option>
-					</select>
-					<br>
-					<p id="nextpumpreq"></p>
+			<h5 class="subtitle">Estimated Nachore Calculator for your next pump</h5>
+			<form action="javascript:void(0);">
+				<br>
+				<div class="form-inline">
+					<div class="form-group col-sm-6">
+
+						<label for="pumplvl">Select current pump level:&nbsp;</label>
+						<select class="form-control col-sm-6" id="pumplvl">
+							<option value="0" selected disabled>-- Select current pump level --</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+						</select>
+					</div>
+					<div class="form-group col-sm-6">
+						<label for="pumplvl">Enter Current Nachores You Have:&nbsp;</label>
+						<input type="number" class="form-control" id="currentnachorecount" min="1" step="1" placeholder="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+						title="Numbers only">
+					</div>
 				</div>
+				<br>
+				<p id="nextpumpreq" class="col-sm-6"></p>
+				<p id="requirednachores" class="col-sm-8"></p>
 				<br>
 				<div class="col-sm-12">
 					<label>Enter Current Resources (leave box as 0 if no resources):</label>
-					<table class="table table-responsive table-bordered" id="calctable">
-						<thead>
-							<tr>
-								<th></th>
-								<th>Leaf/Leaves</th>
-								<th>SB Crafting<br>	(Using 3 or 6 crafting recipe)</th>
-								<th>Queso(s) currently you have<br>(not counting the leaves and crafting it)</th>
-								<th>Total Quesos</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Bland</td>
-								<td></td>							
-								<td>
-								</td>
-								<td>
-									<div class="form-group">
-										<input type="number" class="form-control" id="blandquesocount" min="1" step="1" placeholder="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'
-                      title="Numbers only">
-									</div>
-								</td>
-								<td><span id="totalblandqueso">0</span></td>
-							</tr>
-							<tr>
-								<td>Mild</td>
-								<td>
-									<div class="form-group">
-										<input type="number" class="form-control" id="mildleavescount" min="1" step="1" placeholder="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'
-                      title="Numbers only">
-									</div>
-								</td>						
-								<td>
-									<div class="form-group">
-										<input type="checkbox" class="form-control" id="mildquesosb">
-									</div>
-								</td>
-								<td>
-									<div class="form-group">
-										<input type="number" class="form-control" id="mildquesocount" min="1" step="1" placeholder="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'
-                      title="Numbers only">
-									</div>
-								</td>
-								<td><span id="totalmildqueso">0</span></td>
-							</tr>
-							<tr>
-								<td>Medium</td>
-								<td>
-									<div class="form-group">
-										<input type="number" class="form-control" id="mediumleavescount" min="1" step="1" placeholder="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'
-                      title="Numbers only">
-									</div>
-								</td>
-								<td>
-									<div class="form-group">
-										<input type="checkbox" class="form-control" id="mediumquesosb">
-									</div>
-								</td>
-								<td>
-									<div class="form-group">
-										<input type="number" class="form-control" id="mediumquesocount" min="1" step="1" placeholder="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'
-                      title="Numbers only">
-									</div>
-								</td>
-								<td><span id="totalmediumqueso">0</span></td>
-							</tr>
-							<tr>
-								<td>Hot</td>
-								<td>
-									<div class="form-group">
-										<input type="number" class="form-control" id="hotleavescount" min="1" step="1" placeholder="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'
-                      title="Numbers only">
-									</div>
-								</td>
-								<td>
-									<div class="form-group">
-										<input type="checkbox" class="form-control" id="hotquesosb">
-									</div>
-								</td>
-								<td>
-									<div class="form-group">
-										<input type="number" class="form-control" id="hotquesocount" min="1" step="1" placeholder="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'
-                      title="Numbers only">
-									</div>
-								</td>
-								<td><span id="totalhotqueso">0</span></td>
-							</tr>
-							<tr>
-								<td>Flamin'</td>
-								<td>
-									<div class="form-group">
-										<input type="number" class="form-control" id="flaminleavescount" min="1" step="1" placeholder="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'
-                      title="Numbers only">
-									</div>
-								</td>							
-								<td>
-									<div class="form-group">
-										<input type="checkbox" class="form-control" id="flaminquesosb">
-									</div>
-								</td>
-								<td>
-									<div class="form-group">
-										<input type="number" class="form-control" id="flaminquesocount" min="1" step="1" placeholder="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'
-                      title="Numbers only">
-									</div>
-								</td>
-								<td><span id="totalflaminqueso">0</span></td>
-							</tr>
-						</tbody>
+					<div>
+						<table class="table table-responsive table-bordered" id="calctable">
+							<thead>
+								<tr>
+									<th></th>
+									<th>Leaf/Leaves</th>
+									<th>SB Crafting<br>	(Using 3 or 6 crafting recipe)</th>
+									<th>Queso(s) currently you have<br>(not counting the leaves and crafting it)</th>
+									<th>Total Quesos</th>
+									<th>Convert to next tier leaves?(eg. Use bland queso to get mild leaves)</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Bland</td>
+									<td></td>							
+									<td>
+									</td>
+									<td>
+										<div class="form-group">
+											<input type="number" class="form-control" id="blandquesocount" min="1" step="1" placeholder="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+											title="Numbers only">
+										</div>
+									</td>
+									<td><span id="totalblandqueso">0</span></td>
+									<td>
+										<div class="form-group">
+											<input type="checkbox" class="form-control" id="blandtomild" value="0">
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>Mild</td>
+									<td>
+										<div class="form-group">
+											<input type="number" class="form-control" id="mildleavescount" min="1" step="1" placeholder="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+											title="Numbers only">
+										</div>
+									</td>						
+									<td>
+										<div class="form-group">
+											<input type="checkbox" class="form-control" id="mildquesosb" value="0">
+										</div>
+									</td>
+									<td>
+										<div class="form-group">
+											<input type="number" class="form-control" id="mildquesocount" min="1" step="1" placeholder="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+											title="Numbers only">
+										</div>
+									</td>
+									<td><span id="totalmildqueso">0</span></td>
+									<td>
+										<div class="form-group">
+											<input type="checkbox" class="form-control" id="mildtomedium" value="0">
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>Medium</td>
+									<td>
+										<div class="form-group">
+											<input type="number" class="form-control" id="mediumleavescount" min="1" step="1" placeholder="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+											title="Numbers only">
+										</div>
+									</td>
+									<td>
+										<div class="form-group">
+											<input type="checkbox" class="form-control" id="mediumquesosb" value="0">
+										</div>
+									</td>
+									<td>
+										<div class="form-group">
+											<input type="number" class="form-control" id="mediumquesocount" min="1" step="1" placeholder="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+											title="Numbers only">
+										</div>
+									</td>
+									<td><span id="totalmediumqueso">0</span></td>
+									<td>
+										<div class="form-group">
+											<input type="checkbox" class="form-control" id="mediumtohot" value="0">
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>Hot</td>
+									<td>
+										<div class="form-group">
+											<input type="number" class="form-control" id="hotleavescount" min="1" step="1" placeholder="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+											title="Numbers only">
+										</div>
+									</td>
+									<td>
+										<div class="form-group">
+											<input type="checkbox" class="form-control" id="hotquesosb" value="0">
+										</div>
+									</td>
+									<td>
+										<div class="form-group">
+											<input type="number" class="form-control" id="hotquesocount" min="1" step="1" placeholder="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+											title="Numbers only">
+										</div>
+									</td>
+									<td><span id="totalhotqueso">0</span></td>
+									<td>
+										<div class="form-group">
+											<input type="checkbox" class="form-control" id="hottoflamin" value="0">
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>Flamin'</td>
+									<td>
+										<div class="form-group">
+											<input type="number" class="form-control" id="flaminleavescount" min="1" step="1" placeholder="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+											title="Numbers only">
+										</div>
+									</td>							
+									<td>
+										<div class="form-group">
+											<input type="checkbox" class="form-control" id="flaminquesosb" value="0">
+										</div>
+									</td>
+									<td>
+										<div class="form-group">
+											<input type="number" class="form-control" id="flaminquesocount" min="1" step="1" placeholder="0" onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+											title="Numbers only">
+										</div>
+									</td>
+									<td><span id="totalflaminqueso">0</span></td>
+									<td></td>
+								</tr>
+							</tbody>
 
-					</table>
+						</table>
+					</div>
 				</div>
 
+				<div class="float-right button-align-table">
+					<button class="btn btn-info" id="calcnachoresbtn">Calculate Nachores Output</button>
+				</div>
+				<br>
+				<br>
 			</form>
-
+			<div class="form-group">
+				<textarea id="calculatoroutput" class="col-sm-11" disabled rows="10"></textarea>
+			</div>
 		</div>
 		<hr>
 		<div id="pumptocheeseratio">
-			<h5 class="subtitle">Table of hunts needed for <span class="font-italic">Should I go for X Queso at Pump Y?*</span></h5>
+			<h5 class="subtitle">Table of Blend Queso hunts needed for <span class="font-italic">Should I go for X Queso at Pump Y?*</span></h5>
 			<br>
 			<div>
 				Legend:
@@ -315,6 +364,7 @@
 		</div>
 		<hr>
 		<p>If you see any mistakes/errors/display issues in the information, report to @LegendDemonSlayer#8006 in Discord.</p>
+		<p>Credits to Jack for his wonderful <a href="https://www.agiletravels.com">agiletravels.com</a> tool that helps to track leaves and nachores drop rates.</p>
 	</div>
 
 </body>
@@ -322,6 +372,17 @@
 <script>
 
 	$(document).ready(function(){
+
+
+		//default checkbox change value function
+		$("form input:checkbox").on("change", function(){
+			if ($(this).is(':checked')){
+				$(this).val("1");
+			}
+			else{
+				$(this).val("0");
+			}
+		})
 
 		//check pump level
 		$("#pumplvl").change(function(){
@@ -332,9 +393,31 @@
 			}
 			else if($("#pumplvl").val() == 10){
 				$("#nextpumpreq").html("You're on highest level of pump.");
+				$("#requirednachores").html("Nachores Not Required for Pump Upgrades. Use your Nachores to buy shop items.");
 			}
 			else{
 				$("#nextpumpreq").html("Error!");
+			}
+		});
+
+		//check nachore count
+		$("#currentnachorecount").on('input', function(){
+			if($("#pumplvl").val() != 0 && $("#pumplvl").val() < 10 && $("#pumplvl").val() != null){
+				if ($("#currentnachorecount").val() =="")
+					$("#requirednachores").html("");
+				var nextpumplvl = $("#pumplvl").val();
+				nextpumplvl--;
+				var requirednachore = pumpreq[nextpumplvl] - parseInt($("#currentnachorecount").val());
+				if(requirednachore > 0)
+					$("#requirednachores").html("You need <b>"+requirednachore+"</b> more Nachores.");
+				else if(requirednachore <= 0)
+					$("#requirednachores").html("You have <b>"+Math.abs(requirednachore)+"</b> Nachores left.");
+			}
+			else if($("#pumplvl").val() == 10){
+				$("#requirednachores").html("Nachores not required for pump upgrades. Use your Nachores to buy shop items.");
+			}
+			else{
+				$("#requirednachores").html("Select a pump level!");
 			}
 		});
 
@@ -344,7 +427,7 @@
 				$("#totalblandqueso").text("0");
 			}
 			else{
-				$("#totalblandqueso").text($("#blandquesocount").val() + " Bland Queso(s)");
+				$("#totalblandqueso").text($("#blandquesocount").val());
 			}
 		});
 
@@ -365,10 +448,12 @@
 						mildleavescount = mildleavescount - mildleavescount%10;
 						
 						if(!$("#mildquesosb").is(':checked')){
-							totalmildqueso += mildleavescount/10*3;							
+							totalmildqueso += mildleavescount/10*3;					
+							$("#mildquesosb").val("1");		
 						}
 						else{
-							totalmildqueso += mildleavescount/10*6;						
+							totalmildqueso += mildleavescount/10*6;			
+							$("#mildquesosb").val("0");				
 						}
 					}
 				}
@@ -377,7 +462,7 @@
 
 					totalmildqueso += mildquesocount;
 				}
-				$("#totalmildqueso").text(totalmildqueso + " Mild Queso(s)");
+				$("#totalmildqueso").text(totalmildqueso);
 
 			}
 		});
@@ -412,7 +497,7 @@
 
 					totalmediumqueso += mediumquesocount;
 				}
-				$("#totalmediumqueso").text(totalmediumqueso + " Medium Queso(s)");
+				$("#totalmediumqueso").text(totalmediumqueso);
 
 			}
 		});
@@ -447,7 +532,7 @@
 
 					totalhotqueso += hotquesocount;
 				}
-				$("#totalhotqueso").text(totalhotqueso + " Hot Queso(s)");
+				$("#totalhotqueso").text(totalhotqueso);
 
 			}
 		});
@@ -481,11 +566,33 @@
 
 					totalflaminqueso += flaminquesocount;
 				}
-				$("#totalflaminqueso").text(totalflaminqueso + " Flamin' Queso(s)");
+				$("#totalflaminqueso").text(totalflaminqueso);
 
 			}
-		});		
+		});	
 
+
+		// //onclick calc leaves output call api function	
+		// $("#calcleavesbtn").on("click", function(){
+		// 	var output = globalCalculateOutput($("#totalblandqueso").text(), $("#totalmildqueso").text(), $("#totalmediumqueso").text(),$("#totalhotqueso").text(),$("#totalflaminqueso").text(), "leaves");
+		// 	$("#calculatoroutput").val(output);
+		// });
+
+		//onclick calc nachores output call api function	
+		$("#calcnachoresbtn").on("click", function(){
+
+			//yeah i know it's long af, but meh need to pass everything to API to compute. =(
+			var output = globalCalculateOutput(parseInt($("#totalblandqueso").text()), parseInt($("#blandtomild").val()),
+			 parseInt($("#mildleavescount").val()),parseInt($("#mildquesosb").val()), parseInt($("#mildquesocount").val()), parseInt($("#totalmildqueso").text()), parseInt($("#mildtomedium").val()),
+			 parseInt($("#mediumleavescount").val()),parseInt($("#mediumquesosb").val()), parseInt($("#mediumquesocount").val()), parseInt($("#totalmediumqueso").text()), parseInt($("#mediumtohot").val()),
+			 parseInt($("#hotleavescount").val()),parseInt($("#hotquesosb").val()), parseInt($("#hotquesocount").val()), parseInt($("#totalhotqueso").text()), parseInt($("#hottoflamin").val()),
+			  parseInt($("#flaminleavescount").val()),parseInt($("#flaminquesosb").val()), parseInt($("#flaminquesocount").val()), parseInt($("#totalflaminqueso").text()));
+
+
+			$("#calculatoroutput").val(output);
+
+			//compute final nachore needed more again
+		});
 	});
 
 </script>
