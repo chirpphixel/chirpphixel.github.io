@@ -375,13 +375,8 @@
 
 
 		//default checkbox change value function
-		$("form input:checkbox").on("change", function(){
-			if ($(this).is(':checked')){
-				$(this).val("1");
-			}
-			else{
-				$(this).val("0");
-			}
+		$("input:checkbox").on("change", function(){
+			this.value = this.checked ? 1 : 0;
 		})
 
 		//check pump level
@@ -449,11 +444,9 @@
 						
 						if(!$("#mildquesosb").is(':checked')){
 							totalmildqueso += mildleavescount/10*3;					
-							$("#mildquesosb").val("1");		
 						}
 						else{
-							totalmildqueso += mildleavescount/10*6;			
-							$("#mildquesosb").val("0");				
+							totalmildqueso += mildleavescount/10*6;		
 						}
 					}
 				}
