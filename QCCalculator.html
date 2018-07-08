@@ -8,6 +8,7 @@
 	<!--Javascript-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script src="qc.js"></script>
 
 	<!--CSS-->
@@ -123,7 +124,7 @@
 									<td><span id="totalblandqueso">0</span></td>
 									<td>
 										<div class="form-group">
-											<input type="checkbox" class="form-control" id="blandtomild" value="0">
+											<input type="checkbox" class="form-control" id="blandtomild" value="0">											
 										</div>
 									</td>
 								</tr>
@@ -573,6 +574,9 @@
 
 		//onclick calc nachores output call api function	
 		$("#calcnachoresbtn").on("click", function(){
+
+			if($("#blandtomild").val()==='0')
+			swal("Warning!", "Bland Queso will be used for Nachores Hunt if converting to Mild Spice Leaves is unchecked! Leave Bland Queso you have as 0 if you have no intention to use it in Canyon for Nachore Hunting!", "warning");
 
 			//yeah i know it's long af, but meh need to pass everything to API to compute. =(
 			var output = globalCalculateOutput(parseInt($("#totalblandqueso").text()), parseInt($("#blandtomild").val()),
