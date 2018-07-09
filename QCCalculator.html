@@ -20,6 +20,10 @@
 		.table-responsive {
 			display: inline-table;
 		}
+		.modal-xl {
+			width: 90%;
+			max-width:1200px;
+		}
 	}
 	.table {
 		border-collapse: collapse;
@@ -48,12 +52,29 @@
 		resize: none;
 		margin-left:1%;
 		min-height: 5% !important; 
+	}
 
+	@keyframes color-animation {
+		0% {
+			background: red;
+		}
+		33% {
+			background: green;
+		}
+		66% {
+			background: blue;
+		} 
+		100% {
+			background: white;
+		} 
+	}
+	body.poi{
+		animation: color-animation 3s infinite linear alternate;
 	}
 </style>
 </head>
 
-<body>
+<body class="">
 	<nav class="navbar navbar-default" id="top">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -241,12 +262,12 @@
 				<br>
 			</form>
 			<div class="form-group">
-				<textarea id="calculatoroutput" class="col-sm-11" disabled rows="10"></textarea>
+				<textarea id="calculatoroutput" class="col-sm-11" disabled rows="5"></textarea>
 			</div>
 		</div>
 		<hr>
 		<div id="pumptocheeseratio">
-			<h5 class="subtitle">Table of Blend Queso hunts needed for <span class="font-italic">Should I go for X Queso at Pump Y?*</span></h5>
+			<h5 class="subtitle">Table of Queso River hunts needed for <span class="font-italic">Should I go for X Queso at Pump Y?*</span></h5>
 			<br>
 			<div>
 				Legend:
@@ -364,8 +385,42 @@
 			</table>
 		</div>
 		<hr>
-		<p>If you see any mistakes/errors/display issues in the information, report to @LegendDemonSlayer#8006 in Discord.</p>
+		<p><a data-toggle="modal" data-target="#myModal" href="">Frequently Asked Question (FAQ)</a></p>
 		<p>Credits to Jack for his wonderful <a href="https://www.agiletravels.com">agiletravels.com</a> tool that helps to track leaves and nachores drop rates.</p>
+	</div>
+
+	<!-- Modal -->
+	<div id="myModal" class="modal fade" role="dialog">
+		<div class="modal-dialog modal-xl">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">					
+					<h6 class="modal-title">Frequently Asked Question (FAQ)</h6>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body">
+					<p><b>Q. What is the difference between this calculator and <a href="https://docs.google.com/spreadsheets/d/1M9byMK0M06pifXX7IZliLh2LQCS6MERZBfoX82RsS_E/edit">fysh's Calculator</a>?</b>
+						<br>A. fysh's calculator is more like a calculator that recommends you the best setup for X nachores at Y pump. I have a similar table at the bottom that calculates how many hunts you need to farm enough Bland Quesos for Z Queso. However, the main calculator above is actually for calculating the output of nachores with the resources you have. In other words, it's like a reverse engineering of fysh's calculator, but take note that I didn't steal his work on his wonderful calculator!</p>
+
+					<p><b>Q. Are you sure X Queso is gonna give me Y nachores? / I can't enter or click this thing!!!! Halp?</b>
+						<br>A. If you think there is an error in the values/bug in the page, let me know via Discord @LegendDemonSlayer#8006 or in the MH server and I can investigate it for you.</p>
+
+					<p><b>Q. Can you add feature X to this calculator?</b>
+						<br>A. Similar to the above answer, let me know via Discord @LegendDemonSlayer#8006 or in the MH server and I'll see what I can do.</p>
+
+					<p><b>Q. I have Wildfire Queso. Why can't I enter them?</b>
+						<br>A. Wildfire Quesos are meant to be used for Queen Quesada in Queso River. It drops Unstable Ember Gadget and does not drop any Nachores. Therefore it's not part of the calculator. If you're looking for the rates of the Nachores in Unstable Ember Gadget, go to jacks tool <a href="https://mhhunthelper.agiletravels.com/converter.php?item=2609" target="_blank">here</a>. Spoiler Alert it does not give nachore =)</p>
+
+					<p><b>Q. Is there easter egg in this page?</b>
+						<br>A. Yes. If you happen to click <a id="eastereggclicker" href="#">this</a> exactly 69 times(no more no less), something will happen. <u><b>Epilepsy warning!</b></u> Click again afterwards to remove it.</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+
+		</div>
 	</div>
 
 </body>
@@ -374,6 +429,7 @@
 
 	$(document).ready(function(){
 
+			var clickcounter = 0;
 
 		//default checkbox change value function
 		$("input:checkbox").on("change", function(){
@@ -565,32 +621,35 @@
 			}
 		});	
 
-
-		// //onclick calc leaves output call api function	
-		// $("#calcleavesbtn").on("click", function(){
-		// 	var output = globalCalculateOutput($("#totalblandqueso").text(), $("#totalmildqueso").text(), $("#totalmediumqueso").text(),$("#totalhotqueso").text(),$("#totalflaminqueso").text(), "leaves");
-		// 	$("#calculatoroutput").val(output);
-		// });
-
 		//onclick calc nachores output call api function	
 		$("#calcnachoresbtn").on("click", function(){
 
-			if($("#blandtomild").val()==='0')
-			swal("Warning!", "Bland Queso will be used for Nachores Hunt if converting to Mild Spice Leaves is unchecked! Leave Bland Queso you have as 0 if you have no intention to use it in Canyon for Nachore Hunting!", "warning");
+			if($("#blandtomild").val()==='0' && $("#totalblandqueso").text()!='0')
+				swal("Warning!", "Bland Queso will be used for Nachores Hunt if converting to Mild Spice Leaves is unchecked! Leave Bland Queso you have as 0 if you have no intention to use it in Canyon for Nachore Hunting!", "warning");
 
 			//yeah i know it's long af, but meh need to pass everything to API to compute. =(
 			var output = globalCalculateOutput(parseInt($("#totalblandqueso").text()), parseInt($("#blandtomild").val()),
-			 parseInt($("#mildleavescount").val()),parseInt($("#mildquesosb").val()), parseInt($("#mildquesocount").val()), parseInt($("#totalmildqueso").text()), parseInt($("#mildtomedium").val()),
-			 parseInt($("#mediumleavescount").val()),parseInt($("#mediumquesosb").val()), parseInt($("#mediumquesocount").val()), parseInt($("#totalmediumqueso").text()), parseInt($("#mediumtohot").val()),
-			 parseInt($("#hotleavescount").val()),parseInt($("#hotquesosb").val()), parseInt($("#hotquesocount").val()), parseInt($("#totalhotqueso").text()), parseInt($("#hottoflamin").val()),
-			  parseInt($("#flaminleavescount").val()),parseInt($("#flaminquesosb").val()), parseInt($("#flaminquesocount").val()), parseInt($("#totalflaminqueso").text()));
+				parseInt($("#mildleavescount").val()),parseInt($("#mildquesosb").val()), parseInt($("#mildquesocount").val()), parseInt($("#totalmildqueso").text()), parseInt($("#mildtomedium").val()),
+				parseInt($("#mediumleavescount").val()),parseInt($("#mediumquesosb").val()), parseInt($("#mediumquesocount").val()), parseInt($("#totalmediumqueso").text()), parseInt($("#mediumtohot").val()),
+				parseInt($("#hotleavescount").val()),parseInt($("#hotquesosb").val()), parseInt($("#hotquesocount").val()), parseInt($("#totalhotqueso").text()), parseInt($("#hottoflamin").val()),
+				parseInt($("#flaminleavescount").val()),parseInt($("#flaminquesosb").val()), parseInt($("#flaminquesocount").val()), parseInt($("#totalflaminqueso").text()));
 
 
 			$("#calculatoroutput").val(output);
 
 			//compute final nachore needed more again
 		});
-	});
 
+		$("#eastereggclicker").click(function () {
+			clickcounter += 1;
+
+			if (clickcounter == 69) {
+				$("body").addClass("poi");      			
+			}
+			else{
+				$("body").removeClass("poi");
+			}
+		});
+	});
 </script>
 </html>

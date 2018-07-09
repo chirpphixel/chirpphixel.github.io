@@ -108,8 +108,6 @@ function globalCalculateOutput(blandinput, blandtomildinput,
 	}
 	else if(highestquesolvl === 3){
 
-		//switch test
-
 		switch (true) {
 			case blandtomildinput === 0 && mildtomediuminput === 0 && mediumtohotinput === 0:
 			nachoreoutput += blandinput * rateofnachores[0];
