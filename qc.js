@@ -64,8 +64,6 @@ function globalCalculateOutput(blandinput, blandtomildinput,
 		}
 		else{
 			var outputmildqueso = convertCheeseToHigherTierLeaves(mildleavesinput,blandinput,mildsbinput,0);
-
-			console.log("output is "+outputmildqueso);
 			mildquesoinput += outputmildqueso;
 			nachoreoutput += mildquesoinput * rateofnachores[1];
 		}
@@ -82,8 +80,6 @@ function globalCalculateOutput(blandinput, blandtomildinput,
 			mildquesoinput += outputmildqueso;
 
 			var outputmediumqueso = convertCheeseToHigherTierLeaves(mediumleavesinput,mildquesoinput,mediumsbinput,1);
-
-			console.log("output is "+outputmediumqueso);
 			mediumquesoinput += outputmediumqueso;
 			nachoreoutput += mediumquesoinput * rateofnachores[2];
 		}		
@@ -91,8 +87,6 @@ function globalCalculateOutput(blandinput, blandtomildinput,
 			nachoreoutput += blandinput * rateofnachores[0];
 
 			var outputmediumqueso = convertCheeseToHigherTierLeaves(mediumleavesinput,totalmildquesoinput,mediumsbinput,1);
-
-			console.log("output is "+outputmediumqueso);
 			mediumquesoinput += outputmediumqueso;
 			nachoreoutput += mediumquesoinput * rateofnachores[2];
 		}
@@ -415,19 +409,17 @@ function globalCalculateOutput(blandinput, blandtomildinput,
 			break;
 
 			default:
-			outputtext+="Error at line 201";
+			outputtext+="Error at line 412";
 		}
 
 	console.log(nachoreoutput);
-	outputtext += "-> You will get an estimation of "+ nachoreoutput+" nachores.";
+	outputtext += "-> You will get an estimation of "+ Math.floor(nachoreoutput)+" nachores.";
 
 	return outputtext;
 }
 
 function convertCheeseToHigherTierLeaves(oldleavescount, cheeseused, isSBrecipe, arrlookup){
 	var outputquesocount = 0;
-	console.log("I ran here");
-	console.log(oldleavescount,cheeseused,isSBrecipe,arrlookup);
 	oldleavescount += cheeseused * rateofleaves[arrlookup];
 	if (isSBrecipe === 0)
 		outputquesocount += oldleavescount / 10 * 3;
