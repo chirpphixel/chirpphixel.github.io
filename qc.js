@@ -199,6 +199,12 @@ function globalCalculateOutput(blandinput, blandtomildinput,
 			outputtext+="Error at line 201";
 		}
 
+		//^^ end of Hot compute ^^
+
+		//vv start of flamin' compute
+
+		
+
 	}
 
 	console.log(nachoreoutput);
