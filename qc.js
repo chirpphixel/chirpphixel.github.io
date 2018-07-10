@@ -90,7 +90,7 @@ function globalCalculateOutput(blandinput, blandtomildinput,
 		else if(blandtomildinput === 0 && mildtomediuminput === 1){	
 			nachoreoutput += blandinput * rateofnachores[0];
 
-			var outputmediumqueso = convertCheeseToHigherTierLeaves(mediumleavesinput,mildquesoinput,mediumsbinput,1);
+			var outputmediumqueso = convertCheeseToHigherTierLeaves(mediumleavesinput,totalmildquesoinput,mediumsbinput,1);
 
 			console.log("output is "+outputmediumqueso);
 			mediumquesoinput += outputmediumqueso;
@@ -133,7 +133,7 @@ function globalCalculateOutput(blandinput, blandtomildinput,
 			nachoreoutput += blandinput * rateofnachores[0];
 			nachoreoutput += totalmildquesoinput * rateofnachores[1];
 
-			var outputhotqueso = convertCheeseToHigherTierLeaves(hotleavesinput,mediumquesoinput,hotsbinput,2);
+			var outputhotqueso = convertCheeseToHigherTierLeaves(hotleavesinput,totalmediumquesoinput,hotsbinput,2);
 			hotquesoinput += outputhotqueso;	
 
 			nachoreoutput += hotquesoinput * rateofnachores[3];	
@@ -142,12 +142,11 @@ function globalCalculateOutput(blandinput, blandtomildinput,
 			case blandtomildinput === 0 && mildtomediuminput === 1 && mediumtohotinput === 0:
 			nachoreoutput += blandinput * rateofnachores[0];
 			
-			var outputmediumqueso = convertCheeseToHigherTierLeaves(mediumleavesinput,mildquesoinput,mediumsbinput,1);
+			var outputmediumqueso = convertCheeseToHigherTierLeaves(mediumleavesinput,totalmildquesoinput,mediumsbinput,1);
 			mediumquesoinput += outputmediumqueso;
 
 			nachoreoutput += mediumquesoinput * rateofnachores[2];	
-
-			nachoreoutput += hotquesoinput * rateofnachores[3];	
+			nachoreoutput += totalhotquesoinput * rateofnachores[3];	
 			break;
 
 			case blandtomildinput === 0 && mildtomediuminput === 1 && mediumtohotinput === 1:
@@ -177,7 +176,7 @@ function globalCalculateOutput(blandinput, blandtomildinput,
 
 			nachoreoutput += mildquesoinput * rateofnachores[1];
 
-			var outputhotqueso = convertCheeseToHigherTierLeaves(hotleavesinput,mediumquesoinput,hotsbinput,2);
+			var outputhotqueso = convertCheeseToHigherTierLeaves(hotleavesinput,totalmediumquesoinput,hotsbinput,2);
 			hotquesoinput += outputhotqueso;
 
 			nachoreoutput += hotquesoinput * rateofnachores[3];	
@@ -191,21 +190,233 @@ function globalCalculateOutput(blandinput, blandtomildinput,
 			mediumquesoinput += outputmediumqueso;
 
 			nachoreoutput += mediumquesoinput * rateofnachores[2];
+			nachoreoutput += totalhotquesoinput * rateofnachores[3];	
+			break;
+
+			default:
+			outputtext+="Error at line 199";
+		}
+		
+	}
+//^^ end of Hot compute ^^
+//..................
+//..................
+//..................
+//..................
+//..................
+//..................
+//vv start of flamin' compute vv
+
+	else if(highestquesolvl === 4){
+
+		switch (true) {
+			case blandtomildinput === 0 && mildtomediuminput === 0 && mediumtohotinput === 0 && hottoflamininput === 0:
+			nachoreoutput += blandinput * rateofnachores[0];
+			nachoreoutput += totalmildquesoinput * rateofnachores[1];
+			nachoreoutput += totalmediumquesoinput * rateofnachores[2];	
+			nachoreoutput += totalhotquesoinput * rateofnachores[3];	
+			nachoreoutput += totalflaminquesoinput * rateofnachores[4];
+			break;
+
+			case blandtomildinput === 1 && mildtomediuminput === 1 && mediumtohotinput === 1 && hottoflamininput === 1:
+			var outputmildqueso = convertCheeseToHigherTierLeaves(mildleavesinput,blandinput,mildsbinput,0);
+			mildquesoinput += outputmildqueso;
+
+			var outputmediumqueso = convertCheeseToHigherTierLeaves(mediumleavesinput,mildquesoinput,mediumsbinput,1);
+			mediumquesoinput += outputmediumqueso;
+
+			var outputhotqueso = convertCheeseToHigherTierLeaves(hotleavesinput,mediumquesoinput,hotsbinput,2);
+			hotquesoinput += outputhotqueso;
+
+			var outputflaminqueso = convertCheeseToHigherTierLeaves(flaminleavesinput,hotquesoinput,flaminsbinput,3);
+			flaminquesoinput += outputflaminqueso;
+
+			nachoreoutput += flaminquesoinput * rateofnachores[4];	
+			break;
+
+			case blandtomildinput === 0 && mildtomediuminput === 0 && mediumtohotinput === 0 && hottoflamininput === 1:
+			nachoreoutput += blandinput * rateofnachores[0];
+			nachoreoutput += totalmildquesoinput * rateofnachores[1];
+			nachoreoutput += totalmediumquesoinput * rateofnachores[2];
+
+			var outputflaminqueso = convertCheeseToHigherTierLeaves(flaminleavesinput,totalhotquesoinput,flaminsbinput,3);
+			flaminquesoinput += outputflaminqueso;
+
+			nachoreoutput += flaminquesoinput * rateofnachores[4];	
+			break;
+
+			case blandtomildinput === 0 && mildtomediuminput === 0 && mediumtohotinput === 1 && hottoflamininput === 0:
+			nachoreoutput += blandinput * rateofnachores[0];
+			nachoreoutput += totalmildquesoinput * rateofnachores[1];
+
+			var outputhotqueso = convertCheeseToHigherTierLeaves(hotleavesinput,totalmediumquesoinput,hotsbinput,2);
+			hotquesoinput += outputhotqueso;	
 
 			nachoreoutput += hotquesoinput * rateofnachores[3];	
+			nachoreoutput += totalflaminquesoinput * rateofnachores[4];
+			break;
+
+			case blandtomildinput === 0 && mildtomediuminput === 0 && mediumtohotinput === 1 && hottoflamininput === 1:
+			nachoreoutput += blandinput * rateofnachores[0];
+			nachoreoutput += totalmildquesoinput * rateofnachores[1];
+
+			var outputhotqueso = convertCheeseToHigherTierLeaves(hotleavesinput,totalmediumquesoinput,hotsbinput,2);
+			hotquesoinput += outputhotqueso;	
+
+			var outputflaminqueso = convertCheeseToHigherTierLeaves(flaminleavesinput,hotquesoinput,flaminsbinput,3);
+			flaminquesoinput += outputflaminqueso;
+
+			nachoreoutput += flaminquesoinput * rateofnachores[4];
+			break;
+
+			case blandtomildinput === 0 && mildtomediuminput === 1 && mediumtohotinput === 0 && hottoflamininput === 0:
+			nachoreoutput += blandinput * rateofnachores[0];
+			
+			var outputmediumqueso = convertCheeseToHigherTierLeaves(mediumleavesinput,totalmildquesoinput,mediumsbinput,1);
+			mediumquesoinput += outputmediumqueso;
+
+			nachoreoutput += mediumquesoinput * rateofnachores[2];	
+			nachoreoutput += totalhotquesoinput * rateofnachores[3];	
+			nachoreoutput += totalflaminquesoinput * rateofnachores[4];
+			break;
+
+			case blandtomildinput === 0 && mildtomediuminput === 1 && mediumtohotinput === 0 && hottoflamininput === 1:
+			nachoreoutput += blandinput * rateofnachores[0];
+			
+			var outputmediumqueso = convertCheeseToHigherTierLeaves(mediumleavesinput,totalmildquesoinput,mediumsbinput,1);
+			mediumquesoinput += outputmediumqueso;
+
+			nachoreoutput += mediumquesoinput * rateofnachores[2];	
+			
+			var outputflaminqueso = convertCheeseToHigherTierLeaves(flaminleavesinput,totalhotquesoinput,flaminsbinput,3);
+			flaminquesoinput += outputflaminqueso;
+
+			nachoreoutput += flaminquesoinput * rateofnachores[4];
+			break;
+
+			case blandtomildinput === 0 && mildtomediuminput === 1 && mediumtohotinput === 1 && hottoflamininput === 0:
+			nachoreoutput += blandinput * rateofnachores[0];
+			
+			var outputmediumqueso = convertCheeseToHigherTierLeaves(mediumleavesinput,totalmildquesoinput,mediumsbinput,1);
+			mediumquesoinput += outputmediumqueso;
+
+			var outputhotqueso = convertCheeseToHigherTierLeaves(hotleavesinput,mediumquesoinput,hotsbinput,2);
+			hotquesoinput += outputhotqueso;
+
+			nachoreoutput += hotquesoinput * rateofnachores[3];	
+			nachoreoutput += totalflaminquesoinput * rateofnachores[4];
+			break;
+
+			case blandtomildinput === 0 && mildtomediuminput === 1 && mediumtohotinput === 1 && hottoflamininput === 1:
+			nachoreoutput += blandinput * rateofnachores[0];
+			
+			var outputmediumqueso = convertCheeseToHigherTierLeaves(mediumleavesinput,totalmildquesoinput,mediumsbinput,1);
+			mediumquesoinput += outputmediumqueso;
+
+			var outputhotqueso = convertCheeseToHigherTierLeaves(hotleavesinput,mediumquesoinput,hotsbinput,2);
+			hotquesoinput += outputhotqueso;
+
+			var outputflaminqueso = convertCheeseToHigherTierLeaves(flaminleavesinput,hotquesoinput,flaminsbinput,3);
+			flaminquesoinput += outputflaminqueso;
+
+			nachoreoutput += flaminquesoinput * rateofnachores[4];
+			break;
+
+			case blandtomildinput === 1 && mildtomediuminput === 0  && mediumtohotinput === 0 && hottoflamininput === 0:
+			var outputmildqueso = convertCheeseToHigherTierLeaves(mildleavesinput,blandinput,mildsbinput,0);
+			mildquesoinput += outputmildqueso;
+
+			nachoreoutput += mildquesoinput * rateofnachores[1];
+			nachoreoutput += totalmediumquesoinput * rateofnachores[2];
+			nachoreoutput += totalhotquesoinput * rateofnachores[3];	
+			nachoreoutput += totalflaminquesoinput * rateofnachores[4];
+			break;
+
+			case blandtomildinput === 1 && mildtomediuminput === 0  && mediumtohotinput === 0 && hottoflamininput === 1:
+			var outputmildqueso = convertCheeseToHigherTierLeaves(mildleavesinput,blandinput,mildsbinput,0);
+			mildquesoinput += outputmildqueso;
+
+			nachoreoutput += mildquesoinput * rateofnachores[1];
+			nachoreoutput += totalmediumquesoinput * rateofnachores[2];
+			
+			var outputflaminqueso = convertCheeseToHigherTierLeaves(flaminleavesinput,totalhotquesoinput,flaminsbinput,3);
+			flaminquesoinput += outputflaminqueso;
+
+			nachoreoutput += flaminquesoinput * rateofnachores[4];
+			break;
+
+			case blandtomildinput === 1 && mildtomediuminput === 0 && mediumtohotinput === 1 && hottoflamininput === 0:
+			var outputmildqueso = convertCheeseToHigherTierLeaves(mildleavesinput,blandinput,mildsbinput,0);
+			mildquesoinput += outputmildqueso;
+
+			nachoreoutput += mildquesoinput * rateofnachores[1];
+
+			var outputhotqueso = convertCheeseToHigherTierLeaves(hotleavesinput,totalmediumquesoinput,hotsbinput,2);
+			hotquesoinput += outputhotqueso;
+
+			nachoreoutput += hotquesoinput * rateofnachores[3];
+			nachoreoutput += totalflaminquesoinput * rateofnachores[4];
+			break;
+
+			case blandtomildinput === 1 && mildtomediuminput === 0 && mediumtohotinput === 1 && hottoflamininput === 1:
+			var outputmildqueso = convertCheeseToHigherTierLeaves(mildleavesinput,blandinput,mildsbinput,0);
+			mildquesoinput += outputmildqueso;
+
+			nachoreoutput += mildquesoinput * rateofnachores[1];
+
+			var outputhotqueso = convertCheeseToHigherTierLeaves(hotleavesinput,totalmediumquesoinput,hotsbinput,2);
+			hotquesoinput += outputhotqueso;
+
+			var outputflaminqueso = convertCheeseToHigherTierLeaves(flaminleavesinput,hotquesoinput,flaminsbinput,3);
+			flaminquesoinput += outputflaminqueso;
+
+			nachoreoutput += flaminquesoinput * rateofnachores[4];
+			break;
+
+			case blandtomildinput === 1 && mildtomediuminput === 1 && mediumtohotinput === 0 && hottoflamininput === 0:
+			var outputmildqueso = convertCheeseToHigherTierLeaves(mildleavesinput,blandinput,mildsbinput,0);
+			mildquesoinput += outputmildqueso;
+
+			var outputmediumqueso = convertCheeseToHigherTierLeaves(mediumleavesinput,mildquesoinput,mediumsbinput,1);
+			mediumquesoinput += outputmediumqueso;
+
+			nachoreoutput += mediumquesoinput * rateofnachores[2];
+			nachoreoutput += totalhotquesoinput * rateofnachores[3];	
+			nachoreoutput += totalflaminquesoinput * rateofnachores[4];
+			break;
+
+			case blandtomildinput === 1 && mildtomediuminput === 1 && mediumtohotinput === 0 && hottoflamininput === 1:
+			var outputmildqueso = convertCheeseToHigherTierLeaves(mildleavesinput,blandinput,mildsbinput,0);
+			mildquesoinput += outputmildqueso;
+
+			var outputmediumqueso = convertCheeseToHigherTierLeaves(mediumleavesinput,mildquesoinput,mediumsbinput,1);
+			mediumquesoinput += outputmediumqueso;
+
+			nachoreoutput += mediumquesoinput * rateofnachores[2];
+			
+			var outputflaminqueso = convertCheeseToHigherTierLeaves(flaminleavesinput,totalhotquesoinput,flaminsbinput,3);
+			flaminquesoinput += outputflaminqueso;
+
+			nachoreoutput += flaminquesoinput * rateofnachores[4];
+			break;
+
+			case blandtomildinput === 1 && mildtomediuminput === 1 && mediumtohotinput === 1 && hottoflamininput === 0:
+			var outputmildqueso = convertCheeseToHigherTierLeaves(mildleavesinput,blandinput,mildsbinput,0);
+			mildquesoinput += outputmildqueso;
+
+			var outputmediumqueso = convertCheeseToHigherTierLeaves(mediumleavesinput,mildquesoinput,mediumsbinput,1);
+			mediumquesoinput += outputmediumqueso;
+
+			var outputhotqueso = convertCheeseToHigherTierLeaves(hotleavesinput,mediumquesoinput,hotsbinput,2);
+			hotquesoinput += outputhotqueso;
+
+			nachoreoutput += hotquesoinput * rateofnachores[3];	
+			nachoreoutput += totalflaminquesoinput * rateofnachores[4];
 			break;
 
 			default:
 			outputtext+="Error at line 201";
 		}
-
-		//^^ end of Hot compute ^^
-
-		//vv start of flamin' compute
-
-		
-
-	}
 
 	console.log(nachoreoutput);
 	outputtext += "-> You will get an estimation of "+ nachoreoutput+" nachores.";
