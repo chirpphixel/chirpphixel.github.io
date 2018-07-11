@@ -21,7 +21,7 @@ const rateofleaves = [2.641,1.876,1.342,0.818];
 const rateofnachores = [0.63,2.151,7.394,34.159,91.232];
 const quesotypes = ["Bland","Mild","Medium","Hot","Flamin'","Wildfire"];
 
-//rate as of 12th July 2:12am UTC+8. Rate can be found at https://mhhunthelper.agiletravels.com/loot.php?item=680&timefilter=all.
+//rate as of 12th July 5:11am UTC+8. Rate can be found at https://mhhunthelper.agiletravels.com/loot.php?item=680&timefilter=all.
 //---------------------------------------------------------------
 
 //start of calculating output api
