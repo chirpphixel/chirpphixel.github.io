@@ -21,11 +21,13 @@
 		font-family: 'Karma', serif !important;
 	}
 
-	p {
-		margin-top:15%;
+	p {		
 		text-align: center;
 		font-size: 3em;
 		color: #eee;
+	}
+	#adventclock{
+		margin-top:10%;
 	}
 	.navbar-default{
 		background-color : transparent;
@@ -155,7 +157,19 @@
 	</nav>
 	<!-- <canvas id="my-canvas"></canvas> -->
 	<div class="snowflakes"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-	<p id="clock"></p>	<canvas id="my-canvas"></canvas>
+	
+	<p id="adventclock"></p>
+	<br>
+	<br>
+	<br>
+	
+	<br>
+	<br>
+	<br>
+	<p id="mainclock"></p>	
+
+
+	<!-- <canvas id="my-canvas"></canvas> -->
 	
 
 	<script>
@@ -163,29 +177,49 @@
       var confetti = new ConfettiGenerator(confettiSettings);
       confetti.render();*/
 
+    var adventcountDownDate = new Date("2018-12-01T00:00:00Z").getTime();
 
-      var countDownDate = new Date("2018-12-11T16:00:00Z").getTime();
+    var maincountDownDate = new Date("2018-12-11T16:00:00Z").getTime();
 
+    var y = setInterval(function() {
 
-var x = setInterval(function() {
+	    var now = new Date().getTime();
 
-    var now = new Date().getTime();
+	    var distance = adventcountDownDate - now;
 
-    var distance = countDownDate - now;
+	    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+	    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+	    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+	    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+	    
+	    document.getElementById("adventclock").innerHTML = days + " days " + hours + " hours "
+	    + minutes + " minutes " + seconds + " seconds " + " <br><hr> to Start of Advent Calendar 2018(GWH 2018)";
 
-    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    
-    document.getElementById("clock").innerHTML = days + " days " + hours + " hours "
-    + minutes + " minutes " + seconds + " seconds " + " <br><hr> to Great Winter Hunt 2018 (Estimated)";
+	    if (distance < 0) {
+	    	clearInterval(x);
+	    	document.getElementById("adventclock").innerHTML = "Advent Calendar 2018 Started!";
+	    }
+	}, 1000);
 
-    if (distance < 0) {
-    	clearInterval(x);
-    	document.getElementById("clock").innerHTML = "Great Winter Hunt 2018 Started!";
-    }
-}, 1000);
+	var x = setInterval(function() {
+
+	    var now = new Date().getTime();
+
+	    var distance = maincountDownDate - now;
+
+	    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+	    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+	    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+	    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+	    
+	    document.getElementById("mainclock").innerHTML = days + " days " + hours + " hours "
+	    + minutes + " minutes " + seconds + " seconds " + " <br><hr> to Great Winter Hunt 2018 (Estimated)";
+
+	    if (distance < 0) {
+	    	clearInterval(x);
+	    	document.getElementById("mainclock").innerHTML = "Great Winter Hunt 2018 Started!";
+	    }
+	}, 1000);
 
 </script>
 </body>
