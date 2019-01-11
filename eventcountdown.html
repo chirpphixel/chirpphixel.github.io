@@ -3,7 +3,6 @@
 <head>
 	<link rel="shortcut icon" type="image/png" href="library/mouse.ico"/>
 
-	<!-- <script src="confetti-js-master/dist/index.min.js"></script> -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
@@ -17,14 +16,16 @@
 		width: 100%;
 		height: 100%;
 		overflow: hidden;
-		background: #fff;
-		font-family: 'Karma', serif !important;
+		/*background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);*/
+		background: #c6070c;
+		font-family: 'Karma', serif !important;	
 	}
 
 	p {		
 		text-align: center;
 		font-size: 3em;
-		color: #eee;
+		color: #ffe392;
+		margin-top: 20%;
 	}
 	#adventclock{
 		margin-top:10%;
@@ -38,112 +39,6 @@
 		width:10%;
 		background-color:#eee;
 	}
-
-	html, body {
-		background: #1e5799; /* Old browsers */
-		background: -moz-linear-gradient(top,  #1e5799 0%, #7db9e8 100%); /* FF3.6+ */
-		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1e5799), color-stop(100%,#7db9e8)); /* Chrome,Safari4+ */
-		background: -webkit-linear-gradient(top,  #1e5799 0%,#7db9e8 100%); /* Chrome10+,Safari5.1+ */
-		background: -o-linear-gradient(top,  #1e5799 0%,#7db9e8 100%); /* Opera 11.10+ */
-		background: -ms-linear-gradient(top,  #1e5799 0%,#7db9e8 100%); /* IE10+ */
-		background: linear-gradient(to bottom,  #1e5799 0%,#7db9e8 100%); /* W3C */
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=0 ); /* IE6-9 */
-		min-height:100%;
-	}
-
-	.snowflakes {
-		width: 100%; height: 1200px;
-		position: absolute; top: -90px; left: 0;
-	}
-
-	i, i:after, i:before { background: white; }
-	i {
-		display: inline-block;
-		-webkit-animation: snowflakes 3s linear 2s 20;
-		-moz-animation: snowflakes 3s linear 2s 20;
-		position: relative;
-	}
-	i:after, i:before {
-		height: 100%;
-		width: 100%;
-		content: ".";
-		position: absolute;
-		top: 0px;
-		left: 0px;
-		-webkit-transform: rotate(120deg);
-	}
-	i:before { -webkit-transform: rotate(240deg); }
-
-	@-webkit-keyframes snowflakes {
-		0% {
-			-webkit-transform: translate3d(0,0,0) rotate(0deg) scale(0.6);
-		}
-		100% {
-			-webkit-transform: translate3d(15px, 1200px, 0px) rotate(360deg) scale(0.6);
-		};
-	}
-
-	.snowflakes i:nth-child(3n) {
-		width: 16px; height: 4px;
-		-webkit-animation-duration: 4s;
-		-webkit-animation-iteration-count: 30;
-		-webkit-transform-origin: right -45px;
-	}
-
-	.snowflakes i:nth-child(3n+1) {
-		width: 24px; height: 6px;
-		-webkit-animation-duration: 6s;
-		-webkit-animation-iteration-count: 45;
-		-webkit-transform-origin: right -30px;
-	}
-
-	.snowflakes i:nth-child(3n+2) {
-		width: 32px; height: 8px;
-		-webkit-animation-duration: 8s;
-		-webkit-animation-iteration-count: 60;
-		-webkit-transform-origin: right -15px;
-	}
-	
-	/* different delays so they don't all start at the same time */
-	.snowflakes i:nth-child(7n) {
-		opacity:.3;
-		-webkit-animation-delay: 0s;
-		-webkit-animation-timing-function:ease-in;
-	}
-	.snowflakes i:nth-child(7n+1) {
-		opacity:.4;
-		-webkit-animation-delay: 1s;
-		-webkit-animation-timing-function:ease-out;
-	}
-	.snowflakes i:nth-child(7n+2) {
-		opacity:.5;
-		-webkit-animation-delay: 1.5s;
-		-webkit-animation-timing-function:linear;
-	}
-	.snowflakes i:nth-child(7n+3) {
-		opacity:.6;
-		-webkit-animation-delay: 2s;
-		-webkit-animation-timing-function:ease-in;
-	}
-	.snowflakes i:nth-child(7n+4) {
-		opacity:.7;
-		-webkit-animation-delay: 2.5s;
-		-webkit-animation-timing-function:linear;
-	}
-	.snowflakes i:nth-child(7n+5) {
-		opacity:.8;
-		-webkit-animation-delay: 3s;
-		-webkit-animation-timing-function:ease-out;
-	}
-	.snowflakes i:nth-child(7n+6) {
-		opacity:.9;
-		-webkit-animation-delay: 3.5s;
-		-webkit-animation-timing-function:ease-in;
-	}
-/*#my-canvas{
-	position:absolute;
-	}*/
-
 </style>
 <title>Mousehunt Event Countdown - LegendDemonSlayer</title>
 </head>
@@ -155,26 +50,12 @@
 			</div>
 		</div>
 	</nav>
-	<!-- <canvas id="my-canvas"></canvas> -->
-	<div class="snowflakes"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-	
-	<p id="adventclock"></p>
-	<br>
-	<br>
-	<br>
-	<br>
+
 	<p id="mainclock"></p>	
 
-
-	<!-- <canvas id="my-canvas"></canvas> -->
-	
-
 	<script>
-	  /*var confettiSettings = { target: 'my-canvas', max:'150' };
-      var confetti = new ConfettiGenerator(confettiSettings);
-      confetti.render();*/
 
-    var maincountDownDate = new Date("2019-01-08T16:00:00Z").getTime();
+    var maincountDownDate = new Date("2019-02-05T16:00:00Z").getTime();
 
 	var x = setInterval(function() {
 
@@ -188,11 +69,11 @@
 	    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 	    
 	    document.getElementById("mainclock").innerHTML = days + " days " + hours + " hours "
-	    + minutes + " minutes " + seconds + " seconds " + " <br><hr> to End of Great Winter Hunt 2018/New Year 2019!";
+	    + minutes + " minutes " + seconds + " seconds " + " <br><hr> to Start of Lunar New Year Event!";
 
 	    if (distance < 0) {
 	    	clearInterval(x);
-	    	document.getElementById("mainclock").innerHTML = "Great Winter Hunt 2018/New Year 2019 ended!";
+	    	document.getElementById("mainclock").innerHTML = "Lunar New Year Event Started!";
 	    }
 	}, 1000);
 
