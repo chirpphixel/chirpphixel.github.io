@@ -55,7 +55,7 @@
 
 	<script>
 
-    var maincountDownDate = new Date("2019-02-19T16:00:00Z").getTime();
+    var maincountDownDate = new Date("2019-03-05T16:00:00Z").getTime();
 
 	var x = setInterval(function() {
 
@@ -69,11 +69,11 @@
 	    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 	    
 	    document.getElementById("mainclock").innerHTML = days + " days " + hours + " hours "
-	    + minutes + " minutes " + seconds + " seconds " + " <br><hr> to end of Lunar New Year Event!";
+	    + minutes + " minutes " + seconds + " seconds " + " <br><hr> to start of MH Birthday Event!";
 
 	    if (distance < 0) {
 	    	clearInterval(x);
-	    	document.getElementById("mainclock").innerHTML = "Lunar New Year Event Ended! Now wait for MH Birthday event!";
+	    	document.getElementById("mainclock").innerHTML = "MH Birthday event started! 26 March ends!";
 	    }
 	}, 1000);
 
