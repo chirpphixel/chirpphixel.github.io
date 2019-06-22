@@ -65,7 +65,7 @@
 </div>
 	<script>
 
-		var maincountDownDate = new Date("2019-03-26T15:00:00Z").getTime();
+		var maincountDownDate = new Date("2019-06-25T15:00:00Z").getTime();
 
 		var x = setInterval(function() {
 
@@ -78,12 +78,12 @@
 			var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 			var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-			//document.getElementById("mainclock").innerHTML = days + " days " + hours + " hours "
-			//+ minutes + " minutes " + seconds + " seconds " + " <br><hr> to ended of MH Birthday Event!";
+			document.getElementById("mainclock").innerHTML = days + " days " + hours + " hours "
+			+ minutes + " minutes " + seconds + " seconds " + " <br><hr> till she lands!";
 
 			if (distance < 0) {
 				clearInterval(x);
-				//document.getElementById("mainclock").innerHTML = "MH Birthday event ended!";
+				document.getElementById("mainclock").innerHTML = "Ronza Left!";
 			}
 		}, 1000);
 
