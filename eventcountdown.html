@@ -18,6 +18,8 @@
 		overflow: hidden;
 		background: #fff;
 		font-family: 'Karma', serif !important;	
+		background: url(library/fbconnect.png) 50% 50% repeat-y,url(library/fbconnect.png) 50% 0 no-repeat;
+    background-color: #ab4608;
 	}
 	.offset{
 		padding: 0 20%;
@@ -27,18 +29,15 @@
 	p {		
 		text-align: center;
 		font-size: 3em;
-		color: #3aadff;
+		color: black;
 		margin-top: 20%;
 			margin: auto;
     padding: 10px;
     display: block;
 	}
-	#my-canvas{
+/*	#my-canvas{
 	position:absolute;
-}
-	#adventclock{
-		margin-top:10%;
-	}
+}*/
 	.navbar-default{
 		background-color : transparent;
 		background: url('library/pattern.png');
@@ -46,7 +45,7 @@
 	}
 	hr{
 		width:10%;
-		background-color:#eee;
+		background-color:black;
 	}
 </style>
 <title>Mousehunt Event Countdown - Chirpphixel</title>
@@ -59,13 +58,13 @@
 			</div>
 		</div>
 	</nav>
-	<canvas id="my-canvas"></canvas>
+	<!-- <canvas id="my-canvas"></canvas> -->
 	<div class="offset">
 	<p id="mainclock"></p>	
 </div>
 	<script>
 
-		var maincountDownDate = new Date("2019-07-09T15:00:00Z").getTime();
+		var maincountDownDate = new Date("2019-11-06T16:00:00Z").getTime();
 
 		var x = setInterval(function() {
 
@@ -79,17 +78,17 @@
 			var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
 			document.getElementById("mainclock").innerHTML = days + " days " + hours + " hours "
-			+ minutes + " minutes " + seconds + " seconds " + " <br><hr> till Ronza leaves!";
+			+ minutes + " minutes " + seconds + " seconds " + " <br><hr> till Halloween Event Ends!";
 
 			if (distance < 0) {
 				clearInterval(x);
-				document.getElementById("mainclock").innerHTML = "Ronza Left!";
+				document.getElementById("mainclock").innerHTML = "Halloween Event Ended!";
 			}
 		}, 1000);
 
-		var confettiSettings = { target: 'my-canvas', max:'150' };
-		var confetti = new ConfettiGenerator(confettiSettings);
-		confetti.render();
+		// var confettiSettings = { target: 'my-canvas', max:'150' };
+		// var confetti = new ConfettiGenerator(confettiSettings);
+		// confetti.render();
 
 	</script>
 </body>
