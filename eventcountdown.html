@@ -124,7 +124,7 @@
 </div>
 	<script>
 
-		var maincountDownDate = new Date("2019-12-10T16:00:00Z").getTime();
+		var maincountDownDate = new Date("2020-01-08T16:00:00Z").getTime();
 
 		var x = setInterval(function() {
 
@@ -138,11 +138,11 @@
 			var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
 			document.getElementById("mainclock").innerHTML = days + " days " + hours + " hours "
-			+ minutes + " minutes " + seconds + " seconds " + " <br><hr> till GWH 2019!";
+			+ minutes + " minutes " + seconds + " seconds " + " <br><hr> till GWH 2019 ends!";
 
 			if (distance < 0) {
 				clearInterval(x);
-				document.getElementById("mainclock").innerHTML = "GWH 2019 Starting(soon)!";
+				document.getElementById("mainclock").innerHTML = "GWH 2019 ended!";
 			}
 		}, 1000);
 
