@@ -16,7 +16,11 @@
 		height: 100%;
 		overflow: hidden;
 		font-family: 'Karma', serif !important;	
-		background-color: #305F72;
+		background: url('library/vday.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 	}
 	.offset{
 		padding: 0 20%;
@@ -26,7 +30,7 @@
 	p {		
 		text-align: center;
 		font-size: 4em;
-		color: #fff;
+		color: #111;
 		margin-top: 20%;
 		margin: auto;
     	padding: 10px;
@@ -35,8 +39,12 @@
 	}
 	.navbar-default{
 		background-color : transparent;
-		background: url('library/pattern.png');
+		background: url('library/pattern.png') no-repeat center center fixed;
 		border-color: transparent;
+		-webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 	}
 	hr{
 		width:10%;
@@ -62,7 +70,7 @@
 </div>
 	<script>
 
-		var maincountDownDate = new Date("2020-01-28T16:00:00Z").getTime();
+		var maincountDownDate = new Date("2020-02-19T16:00:00Z").getTime();
 
 		var x = setInterval(function() {
 
@@ -76,11 +84,11 @@
 			var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
 			document.getElementById("mainclock").innerHTML = days + " days " + hours + " hours "
-			+ minutes + " minutes " + seconds + " seconds " + " <br><hr> till LNY 2020 ends!";
+			+ minutes + " minutes " + seconds + " seconds " + " <br><hr> till Valentine's Day event ends!";
 
 			if (distance < 0) {
 				clearInterval(x);
-				document.getElementById("mainclock").innerHTML = "LNY ending (shortly)!";
+				document.getElementById("mainclock").innerHTML = "Valentine's Day event ending (shortly)!";
 			}
 		}, 1000);
 
