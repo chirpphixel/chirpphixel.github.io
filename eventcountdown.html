@@ -16,7 +16,7 @@
 		height: 100%;
 		overflow: hidden;
 		font-family: 'Karma', serif !important;	
-		background: url('library/vday.jpg') no-repeat center center fixed;
+		background: #fff;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -24,7 +24,7 @@
 	}
 	.offset{
 		padding: 0 20%;
-		padding-top:15%;
+		padding-top:10%;
 
 	}
 	p {		
@@ -50,7 +50,9 @@
 		width:10%;
 		background-color: #fff;
 	}
-
+	#my-canvas{
+		position:absolute;
+	}
 
 </style>
 <title>Mousehunt Event Countdown - Chirpphixel</title>
@@ -63,14 +65,14 @@
 			</div>
 		</div>
 	</nav>
-	<!-- <canvas id="my-canvas"></canvas> -->
+	<canvas id="my-canvas"></canvas>
 	<div class="offset">
 		<p id="mainclock"></p>
 		
 </div>
 	<script>
 
-		var maincountDownDate = new Date("2020-02-19T16:00:00Z").getTime();
+		var maincountDownDate = new Date("2020-03-03T16:00:00Z").getTime();
 
 		var x = setInterval(function() {
 
@@ -92,9 +94,9 @@
 			}
 		}, 1000);
 
-		// var confettiSettings = { target: 'my-canvas', max:'150' };
-		// var confetti = new ConfettiGenerator(confettiSettings);
-		// confetti.render();
+		var confettiSettings = { target: 'my-canvas', max:'150' };
+		var confetti = new ConfettiGenerator(confettiSettings);
+		confetti.render();
 
 	</script>
 </body>
