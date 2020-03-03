@@ -72,7 +72,7 @@
 </div>
 	<script>
 
-		var maincountDownDate = new Date("2020-03-03T16:00:00Z").getTime();
+		var maincountDownDate = new Date("2020-03-24T16:00:00Z").getTime();
 
 		var x = setInterval(function() {
 
@@ -86,11 +86,11 @@
 			var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
 			document.getElementById("mainclock").innerHTML = days + " days " + hours + " hours "
-			+ minutes + " minutes " + seconds + " seconds " + " <br><hr> till MH Birthday event starts!";
+			+ minutes + " minutes " + seconds + " seconds " + " <br><hr> till MH Birthday event ends!";
 
 			if (distance < 0) {
 				clearInterval(x);
-				document.getElementById("mainclock").innerHTML = "MH Birthday event starting (shortly)!";
+				document.getElementById("mainclock").innerHTML = "MH Birthday event ending (shortly)!";
 			}
 		}, 1000);
 
